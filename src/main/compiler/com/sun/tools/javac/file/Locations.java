@@ -136,12 +136,17 @@ public class Locations {
 
     private PathFactory pathFactory = Paths::get;
 
-    static final Path javaHome = FileSystems.getDefault().getPath(System.getProperty("java.home"));
-    static final Path thisSystemModules = javaHome.resolve("lib").resolve("modules");
+    public static Path javaHome = FileSystems.getDefault().getPath(System.getProperty("java.home"));
+    public static Path thisSystemModules = javaHome.resolve("lib").resolve("modules");
 
     Map<Path, FileSystem> fileSystems = new LinkedHashMap<>();
     List<Closeable> closeables = new ArrayList<>();
     private Map<String,String> fsEnv = Collections.emptyMap();
+
+    public static void setJavaHome(String javaHomePath) {
+        javaHome = FileSystems.getDefault().getPath(javaHomePath);
+        thisSystemModules = javaHome.resolve("lib").resolve("modules");
+    }
 
     Locations() {
         initHandlers();
@@ -1926,7 +1931,7 @@ public class Locations {
                 } catch (FileSystemNotFoundException | ProviderNotFoundException e) {
                     modules = systemJavaHome.resolve("modules");
                     if (!Files.exists(modules))
-                        throw new IOException("can't find system classes", e);
+                        throw new IOException("can't find system classes in " + modules.toString(), e);
                 }
             }
 
