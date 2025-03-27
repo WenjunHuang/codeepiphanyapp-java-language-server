@@ -25,7 +25,7 @@ import org.javacs.navigation.DefinitionProvider;
 import org.javacs.navigation.ReferenceProvider;
 import org.javacs.rewrite.*;
 
-class JavaLanguageServer extends LanguageServer {
+public class JavaLanguageServer extends LanguageServer {
     // TODO allow multiple workspace roots
     private Path workspaceRoot;
     private final LanguageClient client;
