@@ -49,7 +49,7 @@ public class LanguageServerFixture {
     }
 
     static JavaLanguageServer getJavaLanguageServer(Path workspaceRoot, LanguageClient client) {
-        var server = new JavaLanguageServer(client);
+        var server = new JavaLanguageServer(client,"");
         var init = new InitializeParams();
 
         init.rootUri = workspaceRoot.toUri();

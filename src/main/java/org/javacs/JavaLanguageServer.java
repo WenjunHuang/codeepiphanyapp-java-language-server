@@ -4,6 +4,7 @@ import static org.javacs.JsonHelper.GSON;
 
 import com.google.gson.*;
 import com.sun.source.util.Trees;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Duration;
@@ -11,6 +12,7 @@ import java.time.Instant;
 import java.util.*;
 import java.util.logging.Logger;
 import javax.lang.model.element.*;
+
 import org.javacs.action.CodeActionProvider;
 import org.javacs.completion.CompletionProvider;
 import org.javacs.completion.SignatureProvider;
@@ -33,6 +35,7 @@ public class JavaLanguageServer extends LanguageServer {
     private JsonObject cacheSettings;
     private JsonObject settings = new JsonObject();
     private boolean modifiedBuild = true;
+    final private String jdkClassesPath;
 
     JavaCompilerService compiler() {
         if (needsCompiler()) {
@@ -96,7 +99,7 @@ public class JavaLanguageServer extends LanguageServer {
         // If classpath is specified by the user, don't infer anything
         if (!classPath.isEmpty()) {
             javaEndProgress();
-            return new JavaCompilerService(classPath, docPath(), addExports);
+            return new JavaCompilerService(jdkClassesPath, classPath, docPath(), addExports);
         }
         // Otherwise, combine inference with user-specified external dependencies
         else {
@@ -109,7 +112,7 @@ public class JavaLanguageServer extends LanguageServer {
             var docPath = infer.buildDocPath();
 
             javaEndProgress();
-            return new JavaCompilerService(classPath, docPath, addExports);
+            return new JavaCompilerService(jdkClassesPath, classPath, docPath, addExports);
         }
     }
 
@@ -142,6 +145,7 @@ public class JavaLanguageServer extends LanguageServer {
         }
         return paths;
     }
+
     private Set<String> addExports() {
         if (!settings.has("addExports")) return Set.of();
         var array = settings.getAsJsonArray("addExports");
@@ -189,7 +193,7 @@ public class JavaLanguageServer extends LanguageServer {
     }
 
     private static final String[] watchFiles = {
-        "**/*.java", "**/pom.xml", "**/BUILD",
+            "**/*.java", "**/pom.xml", "**/BUILD",
     };
 
     @Override
@@ -210,10 +214,12 @@ public class JavaLanguageServer extends LanguageServer {
     }
 
     @Override
-    public void shutdown() {}
+    public void shutdown() {
+    }
 
-    public JavaLanguageServer(LanguageClient client) {
+    public JavaLanguageServer(LanguageClient client,String jdkClassesPath) {
         this.client = client;
+        this.jdkClassesPath = jdkClassesPath;
     }
 
     @Override

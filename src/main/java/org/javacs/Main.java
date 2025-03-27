@@ -3,6 +3,7 @@ package org.javacs;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.javacs.lsp.*;
 
 public class Main {
@@ -27,7 +28,7 @@ public class Main {
             // Logger.getLogger("").addHandler(new FileHandler("javacs.%u.log", false));
             setRootFormat();
 
-            LSP.connect(JavaLanguageServer::new, System.in, System.out);
+            LSP.connect((client) -> new JavaLanguageServer(client, "C:\\Users\\rick\\.jdks\\temurin-11.0.26\\jmods\\java.base\\classes"), System.in, System.out);
         } catch (Throwable t) {
             LOG.log(Level.SEVERE, t.getMessage(), t);
 
