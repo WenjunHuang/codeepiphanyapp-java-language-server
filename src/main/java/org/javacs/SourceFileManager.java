@@ -1,5 +1,7 @@
 package org.javacs;
 
+import com.sun.tools.javac.api.JavacTool;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -14,7 +16,8 @@ class SourceFileManager extends ForwardingJavaFileManager<StandardJavaFileManage
     }
 
     private static StandardJavaFileManager createDelegateFileManager() {
-        var compiler = ServiceLoader.load(JavaCompiler.class).iterator().next();
+//        var compiler = ServiceLoader.load(JavaCompiler.class).iterator().next();
+        var compiler = new JavacTool();
         return compiler.getStandardFileManager(SourceFileManager::logError, null, Charset.defaultCharset());
     }
 
