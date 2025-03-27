@@ -12,10 +12,13 @@ import java.util.regex.Pattern;
 import javax.lang.model.element.*;
 import javax.tools.JavaCompiler;
 import javax.tools.JavaFileObject;
+
+import com.sun.tools.javac.api.JavacTool;
 import org.javacs.lsp.*;
 
 class Parser {
-    private static final JavaCompiler COMPILER = ServiceLoader.load(JavaCompiler.class).iterator().next();
+    private static final JavaCompiler COMPILER = new JavacTool();
+    //ServiceLoader.load(JavaCompiler.class).iterator().next();
     private static final SourceFileManager FILE_MANAGER = new SourceFileManager();
 
     /** Create a task that compiles a single file */
