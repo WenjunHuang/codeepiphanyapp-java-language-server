@@ -1,10 +1,12 @@
 package org.javacs;
 
 import com.google.gson.JsonElement;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
+
 import org.javacs.lsp.*;
 
 public class LanguageServerFixture {
@@ -38,18 +40,21 @@ public class LanguageServerFixture {
                     }
 
                     @Override
-                    public void showMessage(ShowMessageParams params) {}
+                    public void showMessage(ShowMessageParams params) {
+                    }
 
                     @Override
-                    public void registerCapability(String method, JsonElement options) {}
+                    public void registerCapability(String method, JsonElement options) {
+                    }
 
                     @Override
-                    public void customNotification(String method, JsonElement params) {}
+                    public void customNotification(String method, JsonElement params) {
+                    }
                 });
     }
 
     static JavaLanguageServer getJavaLanguageServer(Path workspaceRoot, LanguageClient client) {
-        var server = new JavaLanguageServer(client,"");
+        var server = new JavaLanguageServer(client, JavaHomeHelper.getSystemJavaHome());
         var init = new InitializeParams();
 
         init.rootUri = workspaceRoot.toUri();

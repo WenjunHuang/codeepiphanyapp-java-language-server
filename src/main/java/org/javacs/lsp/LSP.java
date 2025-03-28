@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -164,7 +165,8 @@ public class LSP {
     }
 
     public static void connect(
-            Function<LanguageClient, LanguageServer> serverFactory, InputStream receive, OutputStream send) {
+            Function<LanguageClient, LanguageServer> serverFactory,
+            InputStream receive, OutputStream send) {
         var server = serverFactory.apply(new RealClient(send));
         var pending = new ArrayBlockingQueue<Message>(10);
         var endOfStream = new Message();

@@ -35,7 +35,6 @@ public class JavaLanguageServer extends LanguageServer {
     private JsonObject cacheSettings;
     private JsonObject settings = new JsonObject();
     private boolean modifiedBuild = true;
-    final private String jdkClassesPath;
 
     JavaCompilerService compiler() {
         if (needsCompiler()) {
@@ -99,7 +98,7 @@ public class JavaLanguageServer extends LanguageServer {
         // If classpath is specified by the user, don't infer anything
         if (!classPath.isEmpty()) {
             javaEndProgress();
-            return new JavaCompilerService(jdkClassesPath, classPath, docPath(), addExports);
+            return new JavaCompilerService(classPath, docPath(), addExports);
         }
         // Otherwise, combine inference with user-specified external dependencies
         else {
@@ -112,7 +111,7 @@ public class JavaLanguageServer extends LanguageServer {
             var docPath = infer.buildDocPath();
 
             javaEndProgress();
-            return new JavaCompilerService(jdkClassesPath, classPath, docPath, addExports);
+            return new JavaCompilerService(classPath, docPath, addExports);
         }
     }
 
@@ -217,9 +216,10 @@ public class JavaLanguageServer extends LanguageServer {
     public void shutdown() {
     }
 
-    public JavaLanguageServer(LanguageClient client,String jdkClassesPath) {
+    public JavaLanguageServer(LanguageClient client,
+                              Path javaHome) {
+        JavaHomeHelper.setJavaHome(javaHome);
         this.client = client;
-        this.jdkClassesPath = jdkClassesPath;
     }
 
     @Override

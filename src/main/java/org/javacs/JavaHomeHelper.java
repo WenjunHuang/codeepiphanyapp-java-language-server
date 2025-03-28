@@ -14,8 +14,18 @@ import java.util.stream.Collectors;
 
 class JavaHomeHelper {
     static final Path NOT_FOUND = Paths.get("");
+    static Path javaHome;
+
+    static void setJavaHome(Path path) {
+        com.sun.tools.javac.file.Locations.setJavaHome(path.toString());
+        javaHome = path;
+    }
 
     static Path javaHome() {
+        return javaHome;
+    }
+
+    static Path getSystemJavaHome(){
         var fromEnv = System.getenv("JAVA_HOME");
         if (fromEnv != null) {
             return Paths.get(fromEnv);
@@ -32,6 +42,7 @@ class JavaHomeHelper {
         }
         throw new RuntimeException("Unrecognized os.name " + osName);
     }
+
 
     private static Path windowsJavaHome() {
         for (var root : File.listRoots()) {

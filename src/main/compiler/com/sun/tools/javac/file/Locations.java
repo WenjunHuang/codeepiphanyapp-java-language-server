@@ -148,6 +148,10 @@ public class Locations {
         thisSystemModules = javaHome.resolve("lib").resolve("modules");
     }
 
+    public static Path getJavaHome() {
+        return javaHome;
+    }
+
     Locations() {
         initHandlers();
     }

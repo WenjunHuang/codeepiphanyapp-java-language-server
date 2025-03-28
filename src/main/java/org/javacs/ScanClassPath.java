@@ -142,25 +142,27 @@ class ScanClassPath {
         return classes;
     }
 
-    static Set<String> jdkTopLevelClassesInFolder(String folder) {
+    static Set<String> jdkTopLevelClassesInPath(Path rootPath) {
         LOG.info("Searching for top-level classes in the JDK");
 
         var classes = new HashSet<String>();
-        var moduleRoot = (new File(folder)).toPath();
 
-        try (var stream = Files.walk(moduleRoot)) {
-            var it = stream.iterator();
-            while (it.hasNext()) {
-                var classFile = it.next();
-                var relative = moduleRoot.relativize(classFile).toString();
-                if (relative.endsWith(".class") && !relative.contains("$")) {
-                    var trim = relative.substring(0, relative.length() - ".class".length());
-                    var qualifiedName = trim.replace(File.separatorChar, '.');
-                    classes.add(qualifiedName);
+        for (var m : JDK_MODULES) {
+            var moduleRoot = rootPath.resolve(String.format("./modules/%s/", m));
+            try (var stream = Files.walk(moduleRoot)) {
+                var it = stream.iterator();
+                while (it.hasNext()) {
+                    var classFile = it.next();
+                    var relative = moduleRoot.relativize(classFile).toString();
+                    if (relative.endsWith(".class") && !relative.contains("$")) {
+                        var trim = relative.substring(0, relative.length() - ".class".length());
+                        var qualifiedName = trim.replace(File.separatorChar, '.');
+                        classes.add(qualifiedName);
+                    }
                 }
+            } catch (IOException e) {
+                // LOG.log(Level.WARNING, "Failed indexing module " + m + "(" + e.getMessage() + ")");
             }
-        } catch (IOException e) {
-            // LOG.log(Level.WARNING, "Failed indexing module " + m + "(" + e.getMessage() + ")");
         }
 
         LOG.info(String.format("Found %d classes in the java platform", classes.size()));
