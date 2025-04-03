@@ -2,12 +2,14 @@ package org.javacs;
 
 import java.io.*;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.nio.file.attribute.*;
 import java.time.Instant;
 import java.util.*;
 import java.util.logging.Logger;
 import javax.lang.model.element.TypeElement;
+
 import org.javacs.lsp.DidChangeTextDocumentParams;
 import org.javacs.lsp.DidCloseTextDocumentParams;
 import org.javacs.lsp.DidOpenTextDocumentParams;
@@ -19,7 +21,9 @@ public class FileStore {
 
     private static final Map<Path, VersionedContent> activeDocuments = new HashMap<>();
 
-    /** javaSources[file] is the javaSources time of a .java source file. */
+    /**
+     * javaSources[file] is the javaSources time of a .java source file.
+     */
     // TODO organize by package name for speed of list(...)
     private static final TreeMap<Path, Info> javaSources = new TreeMap<>();
 
@@ -246,7 +250,7 @@ public class FileStore {
             return activeDocuments.get(file).content;
         }
         try {
-            return Files.readString(file);
+            return new String(Files.readAllBytes(file), StandardCharsets.UTF_8);
         } catch (NoSuchFileException e) {
             LOG.warning(e.getMessage());
             return "";
@@ -293,7 +297,9 @@ public class FileStore {
         return bufferedReader(file);
     }
 
-    /** Convert from line/column (1-based) to offset (0-based) */
+    /**
+     * Convert from line/column (1-based) to offset (0-based)
+     */
     static int offset(String contents, int line, int column) {
         line--;
         column--;
@@ -337,7 +343,7 @@ public class FileStore {
                 int lines = change.range.end.line - change.range.start.line;
                 int chars = change.range.end.character;
                 for (int lineSkip = 0; lineSkip < lines; lineSkip++) {
-                    reader.readLine();                    
+                    reader.readLine();
                 }
                 reader.skip(chars);
             }

@@ -5,6 +5,7 @@ import com.google.devtools.build.lib.analysis.AnalysisProtosV2;
 import com.google.devtools.build.lib.analysis.AnalysisProtosV2.PathFragment;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -308,7 +309,8 @@ class InferConfig {
         }
         // Read output
         try {
-            var out = Files.readString(output).trim();
+            var out = (new String(Files.readAllBytes(output), StandardCharsets.UTF_8)).trim();
+//            var out = Files.readString(output).trim();
             return Paths.get(out);
         } catch (IOException e) {
             throw new RuntimeException(e);

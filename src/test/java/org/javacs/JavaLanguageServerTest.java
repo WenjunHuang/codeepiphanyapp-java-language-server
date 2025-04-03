@@ -2,6 +2,7 @@ package org.javacs;
 
 import java.io.IOException;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -18,7 +19,7 @@ public class JavaLanguageServerTest {
         TextDocumentItem textDocument = new TextDocumentItem();
         textDocument.uri = URI.create("file:///" + filePath);
         try {
-            textDocument.text = Files.readString(Path.of(filePath));
+            textDocument.text = new String(Files.readAllBytes(Path.of(filePath)), StandardCharsets.UTF_8);
         } catch (IOException e) {
             System.out.println(e.toString());
         }
