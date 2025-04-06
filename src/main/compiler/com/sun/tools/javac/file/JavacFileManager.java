@@ -982,17 +982,18 @@ public class JavacFileManager extends BaseFileManager implements StandardJavaFil
     public <S> ServiceLoader<S> getServiceLoader(Location location, Class<S> service) throws IOException {
         nullCheck(location);
         nullCheck(service);
-        getClass().getModule().addUses(service);
-        if (location.isModuleOrientedLocation()) {
-            Collection<Path> paths = locations.getLocation(location);
-            ModuleFinder finder = ModuleFinder.of(paths.toArray(new Path[paths.size()]));
-            ModuleLayer bootLayer = ModuleLayer.boot();
-            Configuration cf = bootLayer.configuration().resolveAndBind(ModuleFinder.of(), finder, Collections.emptySet());
-            ModuleLayer layer = bootLayer.defineModulesWithOneLoader(cf, ClassLoader.getSystemClassLoader());
-            return ServiceLoader.load(layer, service);
-        } else {
-            return ServiceLoader.load(service, getClassLoader(location));
-        }
+        return null;
+//        getClass().getModule().addUses(service);
+//        if (location.isModuleOrientedLocation()) {
+//            Collection<Path> paths = locations.getLocation(location);
+//            ModuleFinder finder = ModuleFinder.of(paths.toArray(new Path[paths.size()]));
+//            ModuleLayer bootLayer = ModuleLayer.boot();
+//            Configuration cf = bootLayer.configuration().resolveAndBind(ModuleFinder.of(), finder, Collections.emptySet());
+//            ModuleLayer layer = bootLayer.defineModulesWithOneLoader(cf, ClassLoader.getSystemClassLoader());
+//            return ServiceLoader.load(layer, service);
+//        } else {
+//            return ServiceLoader.load(service, getClassLoader(location));
+//        }
     }
 
     @Override @DefinedBy(Api.COMPILER)

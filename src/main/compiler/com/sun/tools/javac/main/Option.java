@@ -27,7 +27,6 @@ package com.sun.tools.javac.main;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.lang.module.ModuleDescriptor;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -659,11 +658,11 @@ public enum Option {
                 throw helper.newInvalidValueException(Errors.NoValueForOption(option));
             } else {
                 // use official parser if available
-                try {
-                    ModuleDescriptor.Version.parse(arg);
-                } catch (IllegalArgumentException e) {
-                    throw helper.newInvalidValueException(Errors.BadValueForOption(option, arg));
-                }
+//                try {
+//                    ModuleDescriptor.Version.parse(arg);
+//                } catch (IllegalArgumentException e) {
+//                    throw helper.newInvalidValueException(Errors.BadValueForOption(option, arg));
+//                }
             }
             super.process(helper, option, arg);
         }

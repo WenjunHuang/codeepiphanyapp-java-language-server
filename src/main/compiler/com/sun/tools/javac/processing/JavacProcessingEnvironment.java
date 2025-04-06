@@ -273,8 +273,8 @@ public class JavacProcessingEnvironment implements ProcessingEnvironment, Closea
                     ? fileManager.getClassLoader(ANNOTATION_PROCESSOR_PATH)
                     : fileManager.getClassLoader(CLASS_PATH);
 
-                if (options.isSet("accessInternalAPI"))
-                    ModuleHelper.addExports(getClass().getModule(), processorClassLoader.getUnnamedModule());
+//                if (options.isSet("accessInternalAPI"))
+//                    ModuleHelper.addExports(getClass().getModule(), processorClassLoader.getUnnamedModule());
 
                 if (processorClassLoader != null && processorClassLoader instanceof Closeable) {
                     compiler.closeables = compiler.closeables.prepend((Closeable) processorClassLoader);
