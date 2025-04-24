@@ -4,19 +4,23 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.javacs</groupId>
-    <artifactId>javac-services</artifactId>
+    <artifactId>JavaLanguageServer</artifactId>
     <packaging>jar</packaging>
     <version>0.1-SNAPSHOT</version>
 
-    <distributionManagement>
-        <repository>
-            <id>distribution-repository</id>
-            <name>Temporary Staging Repository</name>
-            <url>file://${basedir}/dist</url>
-        </repository>
-    </distributionManagement>
-
     <dependencies>
+        <dependency>
+            <groupId>org.graalvm.nativeimage</groupId>
+            <artifactId>library-support</artifactId>
+            <scope>provided</scope>
+            <version>24.2.1</version>
+        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.graalvm.nativeimage</groupId>-->
+        <!--            <artifactId>svm</artifactId>-->
+        <!--            <version>24.2.1</version>-->
+        <!--            <scope>provided</scope>-->
+        <!--        </dependency>-->
         <!-- JSON support -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -42,194 +46,191 @@
             <version>1.3</version>
             <scope>test</scope>
         </dependency>
-        <!-- Benchmarking -->
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>1.21</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-generator-annprocess</artifactId>
-            <version>1.21</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
+
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>3.3.0</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-clean-plugin</artifactId>
-                    <version>2.5</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-install-plugin</artifactId>
-                    <version>2.5.1</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>3.3</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>2.6</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>2.8.1</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <id>add-source</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>src/main/compiler/</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                </executions>
+                <groupId>com.gluonhq</groupId>
+                <artifactId>gluonfx-maven-plugin</artifactId>
+                <version>1.0.26</version>
+                <configuration>
+                    <target>ios</target>
+                    <mainClass>org.javacs.Main</mainClass>
+                    <nativeImageArgs>
+                        <list>--verbose</list>
+<!--                        <list>-J&#45;&#45;add-modules</list>-->
+<!--                        <list>-JALL-SYSTEM</list>-->
+<!--                        <list>&#45;&#45;add-exports=java.base/sun.nio.ch=ALL-UNNAMED</list>-->
+<!--                        <list>&#45;&#45;add-exports=java.base/jdk.internal.ref=ALL-UNNAMED</list>-->
+<!--                        <list>&#45;&#45;add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</list>-->
+<!--                        <list>&#45;&#45;add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</list>-->
+<!--                        <list>&#45;&#45;add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</list>-->
+<!--                        <list>&#45;&#45;add-exports=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</list>-->
+<!--                        <list>&#45;&#45;add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</list>-->
+<!--                        <list>&#45;&#45;add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</list>-->
+<!--                        <list>&#45;&#45;add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</list>-->
+                        <!--                        <list>&#45;&#45;add-exports=jdk.compiler/com.sun.tools.javac.util.DefinedBy=ALL-UNNAMED</list>-->
+                        <!--                        <list>&#45;&#45;initialize-at-build-time=org.javacs.ReusableCompiler</list>-->
+                        <!--                        <list>&#45;&#45;initialize-at-build-time=com.sun.tools.javac.api.JavacTool</list>-->
+                        <!--                        <list>&#45;&#45;initialize-at-build-time=com.sun.tools.javac.file.Locations</list>-->
+<!--                        <list>-H:IncludeResourceBundles=com.sun.tools.javac.resources.compiler</list>-->
+<!--                        <list>-H:IncludeResourceBundles=com.sun.tools.javac.resources.javac</list>-->
+                        <!--                        <list>-H:+AllowJRTFileSystem</list>-->
+                    </nativeImageArgs>
+                    <reflectionList>
+                        <list>com.sun.tools.javac.api.JavacTrees</list>
+                        <list>com.sun.tools.javac.file.Locations</list>
+                        <list>org.javacs.lsp.CancelParams</list>
+                        <list>org.javacs.lsp.CodeAction</list>
+                        <list>org.javacs.lsp.CodeActionContext</list>
+                        <list>org.javacs.lsp.CodeActionKind</list>
+                        <list>org.javacs.lsp.CodeActionParams</list>
+                        <list>org.javacs.lsp.CodeLens</list>
+                        <list>org.javacs.lsp.CodeLensParams</list>
+                        <list>org.javacs.lsp.Command</list>
+                        <list>org.javacs.lsp.CompletionItem</list>
+                        <list>org.javacs.lsp.CompletionItemKind</list>
+                        <list>org.javacs.lsp.CompletionList</list>
+                        <list>org.javacs.lsp.CompletionTriggerKind</list>
+                        <list>org.javacs.lsp.Diagnostic</list>
+                        <list>org.javacs.lsp.DiagnosticSeverity</list>
+                        <list>org.javacs.lsp.DiagnosticTag</list>
+                        <list>org.javacs.lsp.DidChangeConfigurationParams</list>
+                        <list>org.javacs.lsp.DidChangeTextDocumentParams</list>
+                        <list>org.javacs.lsp.DidChangeWatchedFilesParams</list>
+                        <list>org.javacs.lsp.DidChangeWorkspaceFoldersParams</list>
+                        <list>org.javacs.lsp.DidCloseTextDocumentParams</list>
+                        <list>org.javacs.lsp.DidOpenTextDocument</list>
+                        <list>org.javacs.lsp.DidOpenTextDocumentParams</list>
+                        <list>org.javacs.lsp.DidSaveTextDocumentParams</list>
+                        <list>org.javacs.lsp.DocumentFormattingParams</list>
+                        <list>org.javacs.lsp.DocumentHighlight</list>
+                        <list>org.javacs.lsp.DocumentHighlightKind</list>
+                        <list>org.javacs.lsp.DocumentLink</list>
+                        <list>org.javacs.lsp.DocumentLinkParams</list>
+                        <list>org.javacs.lsp.DocumentSymbol</list>
+                        <list>org.javacs.lsp.DocumentSymbolParams</list>
+                        <list>org.javacs.lsp.ErrorCodes</list>
+                        <list>org.javacs.lsp.FileChangeType</list>
+                        <list>org.javacs.lsp.FileEvent</list>
+                        <list>org.javacs.lsp.FoldingRange</list>
+                        <list>org.javacs.lsp.FoldingRangeKind</list>
+                        <list>org.javacs.lsp.FoldingRangeParams</list>
+                        <list>org.javacs.lsp.FormattingOptions</list>
+                        <list>org.javacs.lsp.Hover</list>
+                        <list>org.javacs.lsp.InitializeParams</list>
+                        <list>org.javacs.lsp.InitializeResult</list>
+                        <list>org.javacs.lsp.InsertTextFormat</list>
+                        <list>org.javacs.lsp.JavaReportProgressParams</list>
+                        <list>org.javacs.lsp.JavaStartProgressParams</list>
+                        <list>org.javacs.lsp.LanguageClient</list>
+                        <list>org.javacs.lsp.LanguageServer</list>
+                        <list>org.javacs.lsp.Location</list>
+                        <list>org.javacs.lsp.LSP</list>
+                        <list>org.javacs.lsp.MarkedString</list>
+                        <list>org.javacs.lsp.MarkupContent</list>
+                        <list>org.javacs.lsp.MarkupKind</list>
+                        <list>org.javacs.lsp.Message</list>
+                        <list>org.javacs.lsp.MessageType</list>
+                        <list>org.javacs.lsp.NotificationMessage</list>
+                        <list>org.javacs.lsp.ParameterInformation</list>
+                        <list>org.javacs.lsp.Position</list>
+                        <list>org.javacs.lsp.PublishDiagnosticsParams</list>
+                        <list>org.javacs.lsp.Range</list>
+                        <list>org.javacs.lsp.ReferenceContext</list>
+                        <list>org.javacs.lsp.ReferenceParams</list>
+                        <list>org.javacs.lsp.RegistrationParams</list>
+                        <list>org.javacs.lsp.RenameParams</list>
+                        <list>org.javacs.lsp.RenameResponse</list>
+                        <list>org.javacs.lsp.RequestMessage</list>
+                        <list>org.javacs.lsp.ResponseError</list>
+                        <list>org.javacs.lsp.ShowMessageParams</list>
+                        <list>org.javacs.lsp.SignatureHelp</list>
+                        <list>org.javacs.lsp.SignatureInformation</list>
+                        <list>org.javacs.lsp.SymbolInformation</list>
+                        <list>org.javacs.lsp.SymbolKind</list>
+                        <list>org.javacs.lsp.TextDocumentContentChangeEvent</list>
+                        <list>org.javacs.lsp.TextDocumentEdit</list>
+                        <list>org.javacs.lsp.TextDocumentIdentifier</list>
+                        <list>org.javacs.lsp.TextDocumentItem</list>
+                        <list>org.javacs.lsp.TextDocumentPositionParams</list>
+                        <list>org.javacs.lsp.TextDocumentSaveReason</list>
+                        <list>org.javacs.lsp.TextEdit</list>
+                        <list>org.javacs.lsp.VersionedTextDocumentIdentifier</list>
+                        <list>org.javacs.lsp.WillSaveTextDocumentParams</list>
+                        <list>org.javacs.lsp.WorkspaceEdit</list>
+                        <list>org.javacs.lsp.WorkspaceFolder</list>
+                        <list>org.javacs.lsp.WorkspaceFoldersChangeEvent</list>
+                        <list>org.javacs.lsp.WorkspaceSymbolParams</list>
+                    </reflectionList>
+                    <releaseConfiguration>
+                        <simulatorDevice>iPad Pro 11-inch (M4)</simulatorDevice>
+                    </releaseConfiguration>
+                </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>require-all-plugin-versions-to-be-set</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <requirePluginVersions />
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>build-helper-maven-plugin</artifactId>
+                            <version>3.2.0</version>
+                            <executions>
+                                <execution>
+                                    <id>add-source</id>
+                                    <phase>generate-sources</phase>
+                                    <goals>
+                                        <goal>add-source</goal>
+                                    </goals>
+                                    <configuration>
+                                        <sources>
+                                            <source>src/main/compiler/</source>
+                                        </sources>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
             <!-- Compile-time configuration -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
                 <configuration>
-                    <encoding>UTF-8</encoding>
-                    <source>11</source>
-                    <target>11</target>
-<!--                    <compilerArgs>-->
-<!--                        <arg>&#45;&#45;add-exports</arg>-->
-<!--                        <arg>jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>-->
-<!--                        <arg>&#45;&#45;add-exports</arg>-->
-<!--                        <arg>jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>-->
-<!--                        <arg>&#45;&#45;add-exports</arg>-->
-<!--                        <arg>jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>-->
-<!--                        <arg>&#45;&#45;add-exports</arg>-->
-<!--                        <arg>jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>-->
-<!--                        <arg>&#45;&#45;add-exports</arg>-->
-<!--                        <arg>jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>-->
-<!--                        <arg>&#45;&#45;add-exports</arg>-->
-<!--                        <arg>jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</arg>-->
-<!--                        <arg>&#45;&#45;add-exports</arg>-->
-<!--                        <arg>jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>-->
-<!--                    </compilerArgs>-->
+                    <source>17</source>
+                    <target>17</target>
+                    <compilerArgs>
+<!--                        <arg>&#45;&#45;add-exports=java.base/sun.nio.ch=ALL-UNNAMED</arg>-->
+<!--                        <arg>&#45;&#45;add-exports=java.base/jdk.internal.ref=ALL-UNNAMED</arg>-->
+<!--                        <arg>&#45;&#45;add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>-->
+<!--                        <arg>&#45;&#45;add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>-->
+<!--                        <arg>&#45;&#45;add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>-->
+<!--                        <arg>&#45;&#45;add-exports=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>-->
+<!--                        <arg>&#45;&#45;add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>-->
+<!--                        <arg>&#45;&#45;add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</arg>-->
+<!--                        <arg>&#45;&#45;add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>-->
+                        <!--                        <arg>&#45;&#45;add-exports=jdk.compiler/com.sun.tools.javac.util.DefinedBy=ALL-UNNAMED</arg>-->
+                    </compilerArgs>
                     <!-- Workaround of https://issues.apache.org/jira/browse/MCOMPILER-369 -->
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.openjdk.jmh</groupId>
-                            <artifactId>jmh-generator-annprocess</artifactId>
-                            <version>1.21</version>
-                        </path>
-                    </annotationProcessorPaths>
                 </configuration>
-            </plugin>
-            <!-- Test runtime configuration -->
-            <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M7</version>
-                <configuration>
-                    <argLine>
-                        --add-exports jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED
-                        --add-exports jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED
-                        --add-exports jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED
-                        --add-exports jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED
-                        --add-exports jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED
-                        --add-exports jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED
-                        --add-exports jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED
-                        --add-opens jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED
-                    </argLine>
-                </configuration>
-            </plugin>
-            <!-- Copy dependencies to dist -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.1.1</version>
-                <executions>
-                <execution>
-                    <id>copy-dependencies</id>
-                    <phase>package</phase>
-                    <goals>
-                    <goal>copy-dependencies</goal>
-                    </goals>
-                    <configuration>
-                    <includeScope>runtime</includeScope>
-                    <outputDirectory>${project.basedir}/dist/classpath</outputDirectory>
-                    <overWriteReleases>false</overWriteReleases>
-                    <overWriteSnapshots>false</overWriteSnapshots>
-                    <overWriteIfNewer>true</overWriteIfNewer>
-                    </configuration>
-                </execution>
-                </executions>
-            </plugin>
-            <!-- Copy output jar to dist -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.3.1</version>
-                <configuration>
-                <outputDirectory>${project.basedir}/dist/classpath</outputDirectory>
-                <finalName>java-language-server</finalName>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.6.0</version>
-                <configuration>
-                    <!-- put your configurations here -->
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>ios</id>
+            <properties>
+                <gluonfx.target>ios</gluonfx.target>
+            </properties>
+        </profile>
+        <profile>
+            <id>android</id>
+            <properties>
+                <gluonfx.target>android</gluonfx.target>
+            </properties>
+        </profile>
+    </profiles>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>snapshot</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </pluginRepository>
+    </pluginRepositories>
 </project>

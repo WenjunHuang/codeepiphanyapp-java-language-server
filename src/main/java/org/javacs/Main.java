@@ -19,6 +19,9 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        var javaHome = args[0];
+        System.setProperty("java.home", javaHome);
+
         boolean quiet = Arrays.stream(args).anyMatch("--quiet"::equals);
 
         if (quiet) {
@@ -29,7 +32,7 @@ public class Main {
             // Logger.getLogger("").addHandler(new FileHandler("javacs.%u.log", false));
             setRootFormat();
 
-            LSP.connect((client) -> new JavaLanguageServer(client, Path.of("C:\\Users\\xxx\\.jdks\\temurin-11.0.26")), System.in, System.out);
+            LSP.connect((client) -> new JavaLanguageServer(client, Path.of(javaHome)), System.in, System.out);
         } catch (Throwable t) {
             LOG.log(Level.SEVERE, t.getMessage(), t);
 
