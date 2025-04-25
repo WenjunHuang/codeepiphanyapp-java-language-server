@@ -9,7 +9,7 @@ import java.nio.file.*;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
-import javax.lang.model.element.TypeElement;
+import javax2.lang.model.element.TypeElement;
 
 // Translated from https://golang.org/src/strings/search.go
 

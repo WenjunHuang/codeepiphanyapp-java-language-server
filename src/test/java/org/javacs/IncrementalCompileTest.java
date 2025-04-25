@@ -3,8 +3,8 @@ package org.javacs;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-import com.sun.source.tree.MethodInvocationTree;
-import com.sun.source.util.*;
+import com.sun2.source.tree.MethodInvocationTree;
+import com.sun2.source.util.*;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Path;
@@ -12,10 +12,10 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.ServiceLoader;
 import java.util.logging.Logger;
-import javax.tools.Diagnostic;
-import javax.tools.DiagnosticListener;
-import javax.tools.JavaCompiler;
-import javax.tools.JavaFileObject;
+import javax2.tools.Diagnostic;
+import javax2.tools.DiagnosticListener;
+import javax2.tools.JavaCompiler;
+import javax2.tools.JavaFileObject;
 import org.junit.Before;
 import org.junit.Test;
 

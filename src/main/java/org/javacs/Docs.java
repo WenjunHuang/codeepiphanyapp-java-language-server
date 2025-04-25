@@ -1,13 +1,12 @@
 package org.javacs;
 
 import java.io.IOException;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.logging.Logger;
-import javax.tools.*;
+import javax2.tools.*;
 
 public class Docs {
 

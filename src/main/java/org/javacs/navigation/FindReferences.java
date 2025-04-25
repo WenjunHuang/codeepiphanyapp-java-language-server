@@ -1,9 +1,9 @@
 package org.javacs.navigation;
 
-import com.sun.source.tree.*;
-import com.sun.source.util.*;
+import com.sun2.source.tree.*;
+import com.sun2.source.util.*;
 import java.util.List;
-import javax.lang.model.element.Element;
+import javax2.lang.model.element.Element;
 
 class FindReferences extends TreePathScanner<Void, List<TreePath>> {
     final JavacTask task;

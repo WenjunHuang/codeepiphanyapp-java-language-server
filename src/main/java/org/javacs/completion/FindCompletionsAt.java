@@ -1,16 +1,16 @@
 package org.javacs.completion;
 
-import com.sun.source.tree.CaseTree;
-import com.sun.source.tree.CompilationUnitTree;
-import com.sun.source.tree.ErroneousTree;
-import com.sun.source.tree.IdentifierTree;
-import com.sun.source.tree.ImportTree;
-import com.sun.source.tree.MemberReferenceTree;
-import com.sun.source.tree.MemberSelectTree;
-import com.sun.source.util.JavacTask;
-import com.sun.source.util.TreePath;
-import com.sun.source.util.TreePathScanner;
-import com.sun.source.util.Trees;
+import com.sun2.source.tree.CaseTree;
+import com.sun2.source.tree.CompilationUnitTree;
+import com.sun2.source.tree.ErroneousTree;
+import com.sun2.source.tree.IdentifierTree;
+import com.sun2.source.tree.ImportTree;
+import com.sun2.source.tree.MemberReferenceTree;
+import com.sun2.source.tree.MemberSelectTree;
+import com.sun2.source.util.JavacTask;
+import com.sun2.source.util.TreePath;
+import com.sun2.source.util.TreePathScanner;
+import com.sun2.source.util.Trees;
 
 class FindCompletionsAt extends TreePathScanner<TreePath, Long> {
     private final JavacTask task;

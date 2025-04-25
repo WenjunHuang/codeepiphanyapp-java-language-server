@@ -2,8 +2,8 @@ package org.javacs.lens;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonNull;
-import com.sun.source.tree.*;
-import com.sun.source.util.*;
+import com.sun2.source.tree.*;
+import com.sun2.source.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

@@ -1,9 +1,9 @@
 package org.javacs.markup;
 
-import com.sun.source.tree.*;
-import com.sun.source.util.*;
+import com.sun2.source.tree.*;
+import com.sun2.source.util.*;
 import java.nio.file.Paths;
-import javax.lang.model.element.*;
+import javax2.lang.model.element.*;
 import org.javacs.FileStore;
 import org.javacs.lsp.Range;
 

@@ -1,22 +1,22 @@
 package org.javacs.markup;
 
-import com.sun.source.tree.CompilationUnitTree;
-import com.sun.source.tree.MethodInvocationTree;
-import com.sun.source.tree.MethodTree;
-import com.sun.source.tree.NewClassTree;
-import com.sun.source.tree.ThrowTree;
-import com.sun.source.util.JavacTask;
-import com.sun.source.util.TreePath;
-import com.sun.source.util.TreePathScanner;
-import com.sun.source.util.Trees;
+import com.sun2.source.tree.CompilationUnitTree;
+import com.sun2.source.tree.MethodInvocationTree;
+import com.sun2.source.tree.MethodTree;
+import com.sun2.source.tree.NewClassTree;
+import com.sun2.source.tree.ThrowTree;
+import com.sun2.source.util.JavacTask;
+import com.sun2.source.util.TreePath;
+import com.sun2.source.util.TreePathScanner;
+import com.sun2.source.util.Trees;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import javax.lang.model.element.ExecutableElement;
-import javax.lang.model.element.TypeElement;
-import javax.lang.model.type.DeclaredType;
-import javax.lang.model.type.TypeMirror;
+import javax2.lang.model.element.ExecutableElement;
+import javax2.lang.model.element.TypeElement;
+import javax2.lang.model.type.DeclaredType;
+import javax2.lang.model.type.TypeMirror;
 
 class WarnNotThrown extends TreePathScanner<Void, Map<TreePath, String>> {
     private final JavacTask task;

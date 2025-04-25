@@ -1,6 +1,6 @@
 package org.javacs.markup;
 
-import com.sun.source.tree.CompilationUnitTree;
+import com.sun2.source.tree.CompilationUnitTree;
 import org.javacs.lsp.Position;
 import org.javacs.lsp.Range;
 

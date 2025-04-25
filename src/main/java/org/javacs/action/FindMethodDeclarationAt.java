@@ -1,8 +1,8 @@
 package org.javacs.action;
 
-import com.sun.source.tree.CompilationUnitTree;
-import com.sun.source.tree.MethodTree;
-import com.sun.source.util.*;
+import com.sun2.source.tree.CompilationUnitTree;
+import com.sun2.source.tree.MethodTree;
+import com.sun2.source.util.*;
 
 class FindMethodDeclarationAt extends TreeScanner<MethodTree, Long> {
     private final SourcePositions pos;

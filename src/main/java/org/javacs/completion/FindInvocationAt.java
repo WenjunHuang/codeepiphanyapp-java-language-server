@@ -1,12 +1,12 @@
 package org.javacs.completion;
 
-import com.sun.source.tree.CompilationUnitTree;
-import com.sun.source.tree.MethodInvocationTree;
-import com.sun.source.tree.NewClassTree;
-import com.sun.source.util.JavacTask;
-import com.sun.source.util.TreePath;
-import com.sun.source.util.TreePathScanner;
-import com.sun.source.util.Trees;
+import com.sun2.source.tree.CompilationUnitTree;
+import com.sun2.source.tree.MethodInvocationTree;
+import com.sun2.source.tree.NewClassTree;
+import com.sun2.source.util.JavacTask;
+import com.sun2.source.util.TreePath;
+import com.sun2.source.util.TreePathScanner;
+import com.sun2.source.util.Trees;
 
 class FindInvocationAt extends TreePathScanner<TreePath, Long> {
     private final JavacTask task;

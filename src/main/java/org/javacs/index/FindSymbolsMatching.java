@@ -1,7 +1,7 @@
 package org.javacs.index;
 
-import com.sun.source.tree.*;
-import com.sun.source.util.*;
+import com.sun2.source.tree.*;
+import com.sun2.source.util.*;
 import java.util.List;
 import java.util.Objects;
 import org.javacs.ParseTask;

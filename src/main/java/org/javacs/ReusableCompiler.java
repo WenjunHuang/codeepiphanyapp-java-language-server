@@ -26,33 +26,33 @@
 
 package org.javacs;
 
-import com.sun.source.util.JavacTask;
-import com.sun.source.util.TaskEvent;
-import com.sun.source.util.TaskListener;
-import com.sun.tools.javac.api.*;
-import com.sun.tools.javac.code.Types;
-import com.sun.tools.javac.comp.Annotate;
-import com.sun.tools.javac.comp.Check;
-import com.sun.tools.javac.comp.CompileStates;
-import com.sun.tools.javac.comp.Enter;
-import com.sun.tools.javac.comp.Modules;
-import com.sun.tools.javac.main.Arguments;
-import com.sun.tools.javac.main.JavaCompiler;
-import com.sun.tools.javac.model.JavacElements;
-import com.sun.tools.javac.util.Context;
-import com.sun.tools.javac.util.DefinedBy;
-import com.sun.tools.javac.util.DefinedBy.Api;
-import com.sun.tools.javac.util.Log;
+import com.sun2.source.util.JavacTask;
+import com.sun2.source.util.TaskEvent;
+import com.sun2.source.util.TaskListener;
+import com.sun2.tools.javac.api.*;
+import com.sun2.tools.javac.code.Types;
+import com.sun2.tools.javac.comp.Annotate;
+import com.sun2.tools.javac.comp.Check;
+import com.sun2.tools.javac.comp.CompileStates;
+import com.sun2.tools.javac.comp.Enter;
+import com.sun2.tools.javac.comp.Modules;
+import com.sun2.tools.javac.main.Arguments;
+import com.sun2.tools.javac.main.JavaCompiler;
+import com.sun2.tools.javac.model.JavacElements;
+import com.sun2.tools.javac.util.Context;
+import com.sun2.tools.javac.util.DefinedBy;
+import com.sun2.tools.javac.util.DefinedBy.Api;
+import com.sun2.tools.javac.util.Log;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
-import javax.tools.Diagnostic;
-import javax.tools.DiagnosticListener;
-import javax.tools.JavaFileManager;
-import javax.tools.JavaFileObject;
+import javax2.tools.Diagnostic;
+import javax2.tools.DiagnosticListener;
+import javax2.tools.JavaFileManager;
+import javax2.tools.JavaFileObject;
 
 /**
  * A pool of reusable JavacTasks. When a task is no valid anymore, it is returned to the pool, and its Context may be
@@ -85,7 +85,7 @@ class ReusableCompiler {
     private boolean checkedOut;
 
     /**
-     * Creates a new task as if by {@link javax.tools.JavaCompiler#getTask} and runs the provided worker with it. The
+     * Creates a new task as if by {@link javax2.tools.JavaCompiler#getTask} and runs the provided worker with it. The
      * task is only valid while the worker is running. The internal structures may be reused from some previous
      * compilation.
      *

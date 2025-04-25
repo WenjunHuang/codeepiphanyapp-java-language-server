@@ -1,15 +1,15 @@
 package org.javacs.markup;
 
-import com.sun.source.tree.*;
-import com.sun.source.util.JavacTask;
-import com.sun.source.util.TreePath;
-import com.sun.source.util.TreeScanner;
-import com.sun.source.util.Trees;
+import com.sun2.source.tree.*;
+import com.sun2.source.util.JavacTask;
+import com.sun2.source.util.TreePath;
+import com.sun2.source.util.TreeScanner;
+import com.sun2.source.util.Trees;
 import java.util.*;
-import javax.lang.model.element.Element;
-import javax.lang.model.element.Modifier;
-import javax.lang.model.element.TypeElement;
-import javax.lang.model.type.TypeKind;
+import javax2.lang.model.element.Element;
+import javax2.lang.model.element.Modifier;
+import javax2.lang.model.element.TypeElement;
+import javax2.lang.model.type.TypeKind;
 
 class WarnUnused extends TreeScanner<Void, Void> {
     // Copied from TreePathScanner

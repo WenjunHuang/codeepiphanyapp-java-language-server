@@ -3,7 +3,7 @@ package org.javacs;
 import static org.javacs.JsonHelper.GSON;
 
 import com.google.gson.*;
-import com.sun.source.util.Trees;
+import com.sun2.source.util.Trees;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -11,7 +11,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
 import java.util.logging.Logger;
-import javax.lang.model.element.*;
+import javax2.lang.model.element.*;
 
 import org.javacs.action.CodeActionProvider;
 import org.javacs.completion.CompletionProvider;

@@ -1,8 +1,8 @@
 package org.javacs.rewrite;
 
-import com.sun.source.tree.CompilationUnitTree;
-import com.sun.source.tree.MethodInvocationTree;
-import com.sun.source.util.*;
+import com.sun2.source.tree.CompilationUnitTree;
+import com.sun2.source.tree.MethodInvocationTree;
+import com.sun2.source.util.*;
 
 class FindMethodCallAt extends TreeScanner<MethodInvocationTree, Integer> {
     private final SourcePositions pos;

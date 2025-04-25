@@ -8,7 +8,7 @@ import java.nio.file.attribute.*;
 import java.time.Instant;
 import java.util.*;
 import java.util.logging.Logger;
-import javax.lang.model.element.TypeElement;
+import javax2.lang.model.element.TypeElement;
 
 import org.javacs.lsp.DidChangeTextDocumentParams;
 import org.javacs.lsp.DidCloseTextDocumentParams;

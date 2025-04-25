@@ -1,14 +1,14 @@
 package org.javacs.hover;
 
 import com.google.gson.JsonNull;
-import com.sun.source.tree.*;
-import com.sun.source.util.*;
+import com.sun2.source.tree.*;
+import com.sun2.source.util.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 import java.util.logging.Logger;
-import javax.lang.model.element.*;
+import javax2.lang.model.element.*;
 import org.javacs.CompileTask;
 import org.javacs.CompilerProvider;
 import org.javacs.CompletionData;

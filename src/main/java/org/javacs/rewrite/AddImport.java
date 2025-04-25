@@ -1,7 +1,7 @@
 package org.javacs.rewrite;
 
-import com.sun.source.tree.*;
-import com.sun.source.util.Trees;
+import com.sun2.source.tree.*;
+import com.sun2.source.util.Trees;
 import java.nio.file.Path;
 import java.util.Map;
 import org.javacs.CompilerProvider;

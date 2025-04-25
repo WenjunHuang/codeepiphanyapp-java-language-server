@@ -1,7 +1,7 @@
 package org.javacs.fold;
 
-import com.sun.source.tree.*;
-import com.sun.source.util.*;
+import com.sun2.source.tree.*;
+import com.sun2.source.util.*;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;

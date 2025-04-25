@@ -1,10 +1,10 @@
 package org.javacs.rewrite;
 
-import com.sun.source.tree.ClassTree;
-import com.sun.source.tree.MethodTree;
-import com.sun.source.tree.Tree;
-import com.sun.source.tree.VariableTree;
-import com.sun.source.util.Trees;
+import com.sun2.source.tree.ClassTree;
+import com.sun2.source.tree.MethodTree;
+import com.sun2.source.tree.Tree;
+import com.sun2.source.tree.VariableTree;
+import com.sun2.source.util.Trees;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 import java.util.logging.Logger;
-import javax.lang.model.element.Modifier;
+import javax2.lang.model.element.Modifier;
 import org.javacs.CompileTask;
 import org.javacs.CompilerProvider;
 import org.javacs.lsp.Position;

@@ -1,7 +1,7 @@
 package org.javacs.rewrite;
 
-import com.sun.source.tree.*;
-import com.sun.source.util.*;
+import com.sun2.source.tree.*;
+import com.sun2.source.util.*;
 import java.util.function.Consumer;
 
 class FindFieldReferences extends TreePathScanner<Void, Consumer<TreePath>> {

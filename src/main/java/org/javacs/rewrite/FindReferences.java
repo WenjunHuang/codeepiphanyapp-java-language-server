@@ -1,10 +1,10 @@
 package org.javacs.rewrite;
 
-import com.sun.source.tree.IdentifierTree;
-import com.sun.source.tree.MemberReferenceTree;
-import com.sun.source.tree.MemberSelectTree;
-import com.sun.source.tree.VariableTree;
-import com.sun.source.util.*;
+import com.sun2.source.tree.IdentifierTree;
+import com.sun2.source.tree.MemberReferenceTree;
+import com.sun2.source.tree.MemberSelectTree;
+import com.sun2.source.tree.VariableTree;
+import com.sun2.source.util.*;
 import java.util.function.Consumer;
 
 class FindReferences extends TreePathScanner<Void, Consumer<TreePath>> {

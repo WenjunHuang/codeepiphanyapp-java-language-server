@@ -17,7 +17,7 @@ class JavaHomeHelper {
     static Path javaHome;
 
     static void setJavaHome(Path path) {
-        com.sun.tools.javac.file.Locations.setJavaHome(path.toString());
+        com.sun2.tools.javac.file.Locations.setJavaHome(path.toString());
         javaHome = path;
     }
 

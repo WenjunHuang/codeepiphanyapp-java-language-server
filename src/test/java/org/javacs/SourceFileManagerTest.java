@@ -8,7 +8,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.logging.Logger;
-import javax.tools.*;
+import javax2.tools.*;
 import org.junit.Before;
 import org.junit.Test;
 

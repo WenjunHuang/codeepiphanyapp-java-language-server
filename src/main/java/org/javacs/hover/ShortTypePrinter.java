@@ -2,10 +2,10 @@ package org.javacs.hover;
 
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
-import javax.lang.model.element.ExecutableElement;
-import javax.lang.model.element.Modifier;
-import javax.lang.model.type.*;
-import javax.lang.model.util.AbstractTypeVisitor8;
+import javax2.lang.model.element.ExecutableElement;
+import javax2.lang.model.element.Modifier;
+import javax2.lang.model.type.*;
+import javax2.lang.model.util.AbstractTypeVisitor8;
 
 // TODO this should be package-private once completions code is refactored
 public class ShortTypePrinter extends AbstractTypeVisitor8<String, Void> {

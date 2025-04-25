@@ -1,7 +1,7 @@
 package org.javacs;
 
-import com.sun.source.doctree.DocCommentTree;
-import com.sun.source.doctree.DocTree;
+import com.sun2.source.doctree.DocCommentTree;
+import com.sun2.source.doctree.DocTree;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;

@@ -1,7 +1,7 @@
 package org.javacs.action;
 
-import com.sun.source.tree.*;
-import com.sun.source.util.*;
+import com.sun2.source.tree.*;
+import com.sun2.source.util.*;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -10,7 +10,7 @@ import java.time.Instant;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
-import javax.lang.model.element.*;
+import javax2.lang.model.element.*;
 import org.javacs.*;
 import org.javacs.FindTypeDeclarationAt;
 import org.javacs.lsp.*;

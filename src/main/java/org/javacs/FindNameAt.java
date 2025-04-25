@@ -1,7 +1,7 @@
 package org.javacs;
 
-import com.sun.source.tree.*;
-import com.sun.source.util.*;
+import com.sun2.source.tree.*;
+import com.sun2.source.util.*;
 
 public class FindNameAt extends TreePathScanner<TreePath, Long> {
     private final JavacTask task;

@@ -1,19 +1,19 @@
 package org.javacs;
 
-import com.sun.source.doctree.DocCommentTree;
-import com.sun.source.tree.*;
-import com.sun.source.util.*;
+import com.sun2.source.doctree.DocCommentTree;
+import com.sun2.source.tree.*;
+import com.sun2.source.util.*;
 import java.io.IOException;
 import java.nio.file.*;
 import java.time.Instant;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
-import javax.lang.model.element.*;
-import javax.tools.JavaCompiler;
-import javax.tools.JavaFileObject;
+import javax2.lang.model.element.*;
+import javax2.tools.JavaCompiler;
+import javax2.tools.JavaFileObject;
 
-import com.sun.tools.javac.api.JavacTool;
+import com.sun2.tools.javac.api.JavacTool;
 import org.javacs.lsp.*;
 
 class Parser {
@@ -222,7 +222,7 @@ class Parser {
         return Objects.requireNonNull(find.found);
     }
 
-    private static void ignoreError(javax.tools.Diagnostic<? extends JavaFileObject> __) {
+    private static void ignoreError(javax2.tools.Diagnostic<? extends JavaFileObject> __) {
         // Too noisy, this only comes up in parse tasks which tend to be less important
         // LOG.warning(err.getMessage(Locale.getDefault()));
     }

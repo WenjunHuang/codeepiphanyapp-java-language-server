@@ -56,7 +56,7 @@ public class CodeActionTest {
     @Test
     public void testAddImport() {
         String[] expect = {
-            "Import 'java.util.List'", "Import 'com.google.gson.Gson'", "Import 'com.sun.source.util.TreePathScanner'"
+            "Import 'java.util.List'", "Import 'com.google.gson.Gson'", "Import 'com.util.source.sun2.TreePathScanner'"
         };
         assertThat(quickFix("org/javacs/action/TestAddImport.java"), hasItems(expect));
     }

@@ -39,34 +39,34 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.processing.Processor;
-import javax.lang.model.SourceVersion;
-import javax.tools.DiagnosticListener;
-import javax.tools.JavaFileManager;
-import javax.tools.JavaFileObject;
-import javax.tools.StandardLocation;
+import javax2.annotation.processing.Processor;
+import javax2.lang.model.SourceVersion;
+import javax2.tools.DiagnosticListener;
+import javax2.tools.JavaFileManager;
+import javax2.tools.JavaFileObject;
+import javax2.tools.StandardLocation;
 
-import static javax.tools.StandardLocation.CLASS_OUTPUT;
+import static javax2.tools.StandardLocation.CLASS_OUTPUT;
 
-import com.sun.source.util.TaskEvent;
-import com.sun.tools.javac.api.MultiTaskListener;
-import com.sun.tools.javac.code.*;
-import com.sun.tools.javac.code.Lint.LintCategory;
-import com.sun.tools.javac.code.Symbol.*;
-import com.sun.tools.javac.comp.*;
-import com.sun.tools.javac.comp.CompileStates.CompileState;
-import com.sun.tools.javac.file.JavacFileManager;
-import com.sun.tools.javac.jvm.*;
-import com.sun.tools.javac.parser.*;
-import com.sun.tools.javac.processing.*;
-import com.sun.tools.javac.tree.*;
-import com.sun.tools.javac.tree.JCTree.*;
-import com.sun.tools.javac.util.*;
-import com.sun.tools.javac.util.Log.WriterKind;
+import com.sun2.source.util.TaskEvent;
+import com.sun2.tools.javac.api.MultiTaskListener;
+import com.sun2.tools.javac.code.*;
+import com.sun2.tools.javac.code.Lint.LintCategory;
+import com.sun2.tools.javac.code.Symbol.*;
+import com.sun2.tools.javac.comp.*;
+import com.sun2.tools.javac.comp.CompileStates.CompileState;
+import com.sun2.tools.javac.file.JavacFileManager;
+import com.sun2.tools.javac.jvm.*;
+import com.sun2.tools.javac.parser.*;
+import com.sun2.tools.javac.processing.*;
+import com.sun2.tools.javac.tree.*;
+import com.sun2.tools.javac.tree.JCTree.*;
+import com.sun2.tools.javac.util.*;
+import com.sun2.tools.javac.util.Log.WriterKind;
 
-import static com.sun.tools.javac.code.TypeTag.CLASS;
-import static com.sun.tools.javac.main.Option.*;
-import static com.sun.tools.javac.util.JCDiagnostic.DiagnosticFlag.*;
+import static com.sun2.tools.javac.code.TypeTag.CLASS;
+import static com.sun2.tools.javac.main.Option.*;
+import static com.sun2.tools.javac.util.JCDiagnostic.DiagnosticFlag.*;
 
 
 /** This class could be the main entry point for GJC when GJC is used as a
@@ -104,7 +104,7 @@ public class LargeFile {
         return version("full"); // mm.mm.oo[-milestone]-build
     }
 
-    private static final String versionRBName = "com.sun.tools.javac.resources.version";
+    private static final String versionRBName = "com.resources.javac.tools.sun2.version";
     private static ResourceBundle versionRB;
 
     private static String version(String key) {

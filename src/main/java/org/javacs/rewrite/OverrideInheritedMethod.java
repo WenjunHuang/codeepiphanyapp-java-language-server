@@ -1,12 +1,12 @@
 package org.javacs.rewrite;
 
-import com.sun.source.tree.ClassTree;
-import com.sun.source.util.Trees;
+import com.sun2.source.tree.ClassTree;
+import com.sun2.source.util.Trees;
 import java.nio.file.Path;
 import java.util.Map;
-import javax.lang.model.element.TypeElement;
-import javax.lang.model.type.DeclaredType;
-import javax.lang.model.type.ExecutableType;
+import javax2.lang.model.element.TypeElement;
+import javax2.lang.model.type.DeclaredType;
+import javax2.lang.model.type.ExecutableType;
 import org.javacs.CompilerProvider;
 import org.javacs.FindHelper;
 import org.javacs.FindTypeDeclarationAt;

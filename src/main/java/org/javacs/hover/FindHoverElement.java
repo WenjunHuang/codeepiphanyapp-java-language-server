@@ -1,8 +1,8 @@
 package org.javacs.hover;
 
-import com.sun.source.tree.*;
-import com.sun.source.util.*;
-import javax.lang.model.element.Element;
+import com.sun2.source.tree.*;
+import com.sun2.source.util.*;
+import javax2.lang.model.element.Element;
 
 class FindHoverElement extends TreePathScanner<Element, Long> {
 

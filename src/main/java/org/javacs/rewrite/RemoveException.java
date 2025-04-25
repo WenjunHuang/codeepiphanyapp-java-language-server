@@ -1,14 +1,14 @@
 package org.javacs.rewrite;
 
-import com.sun.source.tree.*;
-import com.sun.source.util.JavacTask;
-import com.sun.source.util.Trees;
+import com.sun2.source.tree.*;
+import com.sun2.source.util.JavacTask;
+import com.sun2.source.util.Trees;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Map;
 import java.util.regex.Pattern;
-import javax.lang.model.element.TypeElement;
-import javax.lang.model.type.DeclaredType;
+import javax2.lang.model.element.TypeElement;
+import javax2.lang.model.type.DeclaredType;
 import org.javacs.CompilerProvider;
 import org.javacs.FindHelper;
 import org.javacs.lsp.Position;

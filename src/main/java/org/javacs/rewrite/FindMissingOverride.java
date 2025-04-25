@@ -1,11 +1,11 @@
 package org.javacs.rewrite;
 
-import com.sun.source.tree.*;
-import com.sun.source.util.*;
+import com.sun2.source.tree.*;
+import com.sun2.source.util.*;
 import java.util.*;
 import java.util.logging.Logger;
-import javax.lang.model.element.*;
-import javax.lang.model.util.*;
+import javax2.lang.model.element.*;
+import javax2.lang.model.util.*;
 
 class FindMissingOverride extends TreePathScanner<Void, List<TreePath>> {
     private final Trees trees;

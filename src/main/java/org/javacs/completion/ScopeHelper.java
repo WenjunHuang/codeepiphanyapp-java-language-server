@@ -1,13 +1,13 @@
 package org.javacs.completion;
 
-import com.sun.source.tree.Scope;
-import com.sun.source.util.Trees;
+import com.sun2.source.tree.Scope;
+import com.sun2.source.util.Trees;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
-import javax.lang.model.element.Element;
-import javax.lang.model.element.Modifier;
-import javax.lang.model.type.DeclaredType;
+import javax2.lang.model.element.Element;
+import javax2.lang.model.element.Modifier;
+import javax2.lang.model.type.DeclaredType;
 import org.javacs.CompileTask;
 
 class ScopeHelper {
@@ -21,7 +21,7 @@ class ScopeHelper {
         // The outermost scope contains those elements available via "star import" declarations;
         // the scope within that contains the top level elements of the compilation unit, including any named
         // imports.
-        // https://parent.docs.oracle.com/en/java/javase/11/docs/api/jdk.compiler/com/sun/source/tree/Scope.html
+        // https://parent.docs.oracle.com/en/java/javase/11/docs/api/jdk2.compiler/com/sun/source/tree/Scope.html
         return scopes.subList(0, scopes.size() - 2);
     }
 

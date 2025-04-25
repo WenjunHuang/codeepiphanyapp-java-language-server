@@ -1,15 +1,15 @@
 package org.javacs.markup;
 
-import com.sun.source.tree.*;
-import com.sun.source.util.*;
+import com.sun2.source.tree.*;
+import com.sun2.source.util.*;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
-import javax.lang.model.element.Element;
-import javax.tools.Diagnostic;
-import javax.tools.JavaFileObject;
+import javax2.lang.model.element.Element;
+import javax2.tools.Diagnostic;
+import javax2.tools.JavaFileObject;
 import org.javacs.CompileTask;
 import org.javacs.FileStore;
 import org.javacs.lsp.*;
@@ -70,7 +70,7 @@ public class ErrorProvider {
      * lspDiagnostic(d, lines) converts d to LSP format, with its position shifted appropriately for the latest version
      * of the file.
      */
-    private org.javacs.lsp.Diagnostic lspDiagnostic(javax.tools.Diagnostic<? extends JavaFileObject> d, LineMap lines) {
+    private org.javacs.lsp.Diagnostic lspDiagnostic(javax2.tools.Diagnostic<? extends JavaFileObject> d, LineMap lines) {
         var start = d.getStartPosition();
         var end = d.getEndPosition();
         var startLine = (int) lines.getLineNumber(start);
@@ -89,7 +89,7 @@ public class ErrorProvider {
         return result;
     }
 
-    private int severity(javax.tools.Diagnostic.Kind kind) {
+    private int severity(javax2.tools.Diagnostic.Kind kind) {
         switch (kind) {
             case ERROR:
                 return DiagnosticSeverity.Error;

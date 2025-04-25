@@ -1,13 +1,13 @@
 package org.javacs.navigation;
 
-import com.sun.source.util.Trees;
+import com.sun2.source.util.Trees;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import javax.lang.model.element.Element;
-import javax.lang.model.element.TypeElement;
-import javax.lang.model.type.TypeKind;
-import javax.tools.JavaFileObject;
+import javax2.lang.model.element.Element;
+import javax2.lang.model.element.TypeElement;
+import javax2.lang.model.type.TypeKind;
+import javax2.tools.JavaFileObject;
 import org.javacs.CompileTask;
 import org.javacs.CompilerProvider;
 import org.javacs.FindHelper;

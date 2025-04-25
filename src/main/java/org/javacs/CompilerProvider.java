@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import javax.tools.JavaFileObject;
+import javax2.tools.JavaFileObject;
 
 public interface CompilerProvider {
     Set<String> imports();

@@ -1,9 +1,9 @@
 package org.javacs.navigation;
 
-import com.sun.source.util.Trees;
+import com.sun2.source.util.Trees;
 import java.nio.file.Path;
-import javax.lang.model.element.Element;
-import javax.lang.model.element.Modifier;
+import javax2.lang.model.element.Element;
+import javax2.lang.model.element.Modifier;
 import org.javacs.CompileTask;
 import org.javacs.FindNameAt;
 
