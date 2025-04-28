@@ -108,6 +108,7 @@
                         <list>org.javacs.lsp.Location</list>
                         <list>org.javacs.lsp.LSP</list>
                         <list>org.javacs.lsp.MarkedString</list>
+                        <list>org.javacs.lsp.MarkedString$Adapter</list>
                         <list>org.javacs.lsp.MarkupContent</list>
                         <list>org.javacs.lsp.MarkupKind</list>
                         <list>org.javacs.lsp.Message</list>

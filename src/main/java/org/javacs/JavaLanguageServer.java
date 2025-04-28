@@ -11,6 +11,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
 import java.util.logging.Logger;
+
 import javax2.lang.model.element.*;
 
 import org.javacs.action.CodeActionProvider;
@@ -92,27 +93,10 @@ public class JavaLanguageServer extends LanguageServer {
         javaStartProgress(new JavaStartProgressParams("Configure javac"));
         javaReportProgress(new JavaReportProgressParams("Finding source roots"));
 
-        var externalDependencies = externalDependencies();
         var classPath = classPath();
         var addExports = addExports();
-        // If classpath is specified by the user, don't infer anything
-        if (!classPath.isEmpty()) {
-            javaEndProgress();
-            return new JavaCompilerService(classPath, docPath(), addExports);
-        }
-        // Otherwise, combine inference with user-specified external dependencies
-        else {
-            var infer = new InferConfig(workspaceRoot, externalDependencies);
-
-            javaReportProgress(new JavaReportProgressParams("Inferring class path"));
-            classPath = infer.classPath();
-
-            javaReportProgress(new JavaReportProgressParams("Inferring doc path"));
-            var docPath = infer.buildDocPath();
-
-            javaEndProgress();
-            return new JavaCompilerService(classPath, docPath, addExports);
-        }
+        javaEndProgress();
+        return new JavaCompilerService(classPath, docPath(), addExports);
     }
 
     private Set<String> externalDependencies() {
